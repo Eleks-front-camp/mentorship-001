@@ -128,6 +128,8 @@ header {
   background: url('img/logo.png') no-repeat center/contain;
 }
 
+/* user */
+
 .fm-user {
   display: flex;
   align-items: center;
@@ -216,11 +218,17 @@ header {
   width: 100%;
 }
 
+/* /.user */
+
+/* main-content */
+
 .fm-main-content {
   height: 100%;
   max-height: calc(100% - var(--fm-footer-height));
   background: url('img/main-bg.png') no-repeat center/cover;
 }
+
+/* /main-content */
 
 /* footer */
 
@@ -229,6 +237,8 @@ footer {
   padding: 15px 0px;
   background-color: #242323;
 }
+
+/* .control-btn */
 
 .fm-control-btn {
   display: flex;
@@ -259,6 +269,8 @@ footer {
   border-left: calc(var(--fm-control-btn-size) / 6) solid #fff;
   border-right: calc(var(--fm-control-btn-size) / 6) solid #fff;
 }
+
+/* /.control-btn */
 
 .fm-footer-content {
   display: flex;
@@ -298,3 +310,5 @@ footer {
     padding-left: 120px;
   }
 }
+
+/* /footer */
