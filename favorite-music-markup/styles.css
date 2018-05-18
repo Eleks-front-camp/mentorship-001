@@ -5,8 +5,10 @@
 body {
   margin: 0px;
   padding: 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
+h4,
 p,
 ul {
   margin: 0;
@@ -17,6 +19,8 @@ ul {
 */
 
 :root {
+  /* fm-header */
+  --fm-header-height: 80px;
   /* fm-footer */
   --fm-footer-height: 75px;
   --fm-control-btn-size: 150px;
@@ -110,7 +114,8 @@ header {
   position: fixed;
   z-index: 10;
   width: 100%;
-  padding: 5px 0px;
+  /* padding: 5px 0px; */
+  height: var(--fm-header-height);
   background: #fff;
   box-shadow: 0 2px 18px 0 rgba(129, 162, 182, .2);
 }
@@ -223,11 +228,54 @@ header {
 /* main-content */
 
 .fm-main-content {
+  padding-top: var(--fm-header-height);
   height: 100%;
   max-height: calc(100% - var(--fm-footer-height));
   background: url('img/main-bg.png') no-repeat center/cover;
 }
 
+.fm-main-content h3 {
+  margin-left: 15px;
+  font-size: 3.4rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+/* sounds-list */
+
+.fm-sounds-list {
+  display: flex;
+}
+
+/* /sounds-list */
+
+/* sound-card */
+
+.fm-sound-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 20%;
+  margin: 0px 15px;
+  min-width: 150px;
+  min-height: 150px;
+  /* border: 1px solid #fff; */
+  background: rgba(129, 162, 182, .2) no-repeat center/cover;
+  cursor: pointer;
+}
+
+.fm-sound-card-content {
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .8);
+}
+
+.fm-sound-card-title,
+.fm-sound-card-description {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* /sound-card */
 /* /main-content */
 
 /* footer */
