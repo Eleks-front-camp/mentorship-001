@@ -23,6 +23,7 @@ var _soundsList = [
 // sounds API
 var soundsAPI = new Promise(function (resolve, reject) {
   resolve(_soundsList);
+  reject(new Error('Some error message....'));
 });
 
 function SoundsList() {
@@ -35,9 +36,12 @@ function SoundsList() {
 }
 
 SoundsList.prototype._getSoundsList = function () {
-  soundsAPI.then(function (data) {
-    this._createList(data)
-  }.bind(this));
+  soundsAPI.then(
+    function (data) {
+      this._createList(data)
+    }.bind(this),
+    function (err) { err.message }
+  );
 }
 
 SoundsList.prototype._createList = function (list) {
