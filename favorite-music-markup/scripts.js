@@ -43,29 +43,33 @@ SoundsList.prototype._getSoundsList = function () {
 SoundsList.prototype._createList = function (list) {
   list.forEach(function (item) {
     document.querySelector('.fm-sounds-list')
-      .insertAdjacentHTML('beforeend',
-        `
-          <div class="fm-sound-card"
-            data-sound="${item.sound}"
-            style="
-              background-image: url('${item.img}');
-            ">
-            <div class="fm-sound-card-content">
-              <h4 class="fm-sound-card-title">${item.author}</h4>
-              <p class="fm-sound-card-description">${item.name}</p>
-            </div>
-          </div>
-        `
-      );
-  });
+      .insertAdjacentHTML('beforeend', this._createTemplate(item));
+  }.bind(this));
 
+  this._addEventInSoundCard();
+}
+
+SoundsList.prototype._createTemplate = function (item) {
+  return `
+      <div class="fm-sound-card"
+        data-sound="${item.sound}"
+        style="
+          background-image: url('${item.img}');
+        ">
+        <div class="fm-sound-card-content">
+          <h4 class="fm-sound-card-title">${item.author}</h4>
+          <p class="fm-sound-card-description">${item.name}</p>
+        </div>
+      </div>
+    `;
+}
+
+SoundsList.prototype._addEventInSoundCard = function () {
   document.querySelectorAll('.fm-sound-card').forEach(
     function (item) {
-      item.addEventListener('click',
-        function (e) {
-          this._playSounds(e)
-        }.bind(this)
-      );
+      item.addEventListener('click', function (e) {
+        this._playSounds(e)
+      }.bind(this));
     }.bind(this)
   );
 }
