@@ -65,7 +65,9 @@ body {
 /* ATOMCSS
   atom styles
 */
-
+.clear-both {
+  clear: both;
+}
 /* LAYOUT
   styles for layout elements
 */
@@ -244,6 +246,7 @@ header {
 
 .fm-sounds-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 /* /sounds-list */
@@ -251,19 +254,41 @@ header {
 /* sound-card */
 
 .fm-sound-card {
-  display: flex;
-  align-items: center;
+  --hirizontal-zige: 15px;
+
+  /* float: left; */
   position: relative;
-  width: 20%;
-  margin: 0px 15px;
-  min-width: 150px;
+  width: calc(20% - var(--hirizontal-zige) * 2);
+  margin: 0px var(--hirizontal-zige) 30px;
   min-height: 150px;
-  /* border: 1px solid #fff; */
   background: rgba(129, 162, 182, .2) no-repeat center/cover;
   cursor: pointer;
 }
+@media (max-width: 992px) {
+  .fm-sound-card {
+    width: calc(25% - var(--hirizontal-zige) * 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .fm-sound-card {
+    width: calc(33% - var(--hirizontal-zige) * 2);
+  }
+}
+
+
+@media (max-width: 576px) {
+  .fm-sound-card {
+    width: calc(50% - var(--hirizontal-zige) * 2);
+  }
+}
+
+
+
 
 .fm-sound-card-content {
+  bottom: 0;
+  position: absolute;
   padding: 10px;
   width: 100%;
   background-color: rgba(255, 255, 255, .8);
