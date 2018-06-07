@@ -5,7 +5,6 @@
 body {
   margin: 0px;
   padding: 0px;
-  font-family: 'Open Sans', sans-serif;
 }
 
 h4,
@@ -104,6 +103,13 @@ body {
   .fm-container {
     max-width: 1140px;
   }
+}
+
+.fm-bg-img {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url(img/main-bg.png) no-repeat center/cover;
 }
 
 /* COMPONENTS
@@ -230,14 +236,13 @@ header {
 /* main-content */
 
 .fm-main-content {
-  padding-top: var(--fm-header-height);
-  height: 100%;
-  max-height: calc(100% - var(--fm-footer-height));
-  background: url('img/main-bg.png') no-repeat center/cover;
+  padding-top: calc(var(--fm-header-height) + 30px);
+  margin-bottom: calc(var(--fm-control-btn-size) + 30px);
 }
 
 .fm-main-content h3 {
   margin-left: 15px;
+  margin-top: 0px;
   font-size: 3.4rem;
   text-transform: uppercase;
   font-weight: 400;
@@ -260,10 +265,11 @@ header {
   position: relative;
   width: calc(20% - var(--hirizontal-zige) * 2);
   margin: 0px var(--hirizontal-zige) 30px;
-  min-height: 150px;
+  min-height: 110px;
   background: rgba(129, 162, 182, .2) no-repeat center/cover;
   cursor: pointer;
 }
+
 @media (max-width: 992px) {
   .fm-sound-card {
     width: calc(25% - var(--hirizontal-zige) * 2);
@@ -303,6 +309,9 @@ header {
 /* footer */
 
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   height: var(--fm-footer-height);
   padding: 15px 0px;
   background-color: #242323;
