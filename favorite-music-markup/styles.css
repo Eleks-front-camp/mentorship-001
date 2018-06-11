@@ -234,6 +234,7 @@ header {
 /* main-content */
 
 .fm-main-content {
+  position: relative;
   padding-top: calc(var(--fm-header-height) + 30px);
   margin-bottom: calc(var(--fm-control-btn-size) + 30px);
 }
@@ -330,7 +331,7 @@ footer {
   cursor: pointer;
 }
 
-.fm-control-btn-play::before {
+.fm-control-btn::before {
   content: '';
   width: 0px;
   height: 0px;
@@ -339,12 +340,14 @@ footer {
   border-bottom: calc(var(--fm-control-btn-size) / 3) solid transparent;
 }
 
-.fm-control-btn-pause::before {
+.fm-control-btn.pause::before {
   content: '';
   width: calc(var(--fm-control-btn-size) / 6);
   height: calc((var(--fm-control-btn-size) / 3) * 2);
   border-left: calc(var(--fm-control-btn-size) / 6) solid #fff;
   border-right: calc(var(--fm-control-btn-size) / 6) solid #fff;
+  border-bottom: none;
+  border-top: none;
 }
 
 /* /.control-btn */
