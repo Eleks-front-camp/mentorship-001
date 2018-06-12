@@ -10,7 +10,7 @@ SoundsList.prototype._getSoundsList = function () {
       soundsData = data ? JSON.parse(data) : [];
       this._createList(soundsData);
     }.bind(this),
-    function (err) { err.message }
+    function (err) { err.message; }
   );
 }
 
@@ -23,12 +23,12 @@ SoundsList.prototype._createList = function (list) {
   }.bind(this));
 
   this.player._addEventInSoundCard();
+  this.player._isFirstSoundCard(list);
 }
 
 SoundsList.prototype._createTemplate = function (item) {
   return '<div class="fm-sound-card"' +
-    'data-id="' + item.id + '"' +
-    'style="background-image: url(' + item.img + ');">' +
+    'data-id="' + item.id + '" style="background-image: url(' + item.img + ')">' +
     '<div class="fm-sound-card-content">' +
     '<h4 class="fm-sound-card-title">' + item.author + '</h4>' +
     '<p class="fm-sound-card-description">' + item.name + '</p>' +
@@ -46,16 +46,20 @@ function Player() {
     previous: null,
     current: null,
     next: null
-  }
+  };
   this.isPlay = false;
 
   this._audioPlayerEvents();
 }
 
+Player.prototype._isFirstSoundCard = function (data) {
+  this._addDataInPlayer(data[0]);
+}
+
 Player.prototype._toggleControlBtn = function (state) {
   (state)
-  ? this.controlBtn.classList.add('pause')
-  : this.controlBtn.classList.remove('pause');
+    ? this.controlBtn.classList.add('pause')
+    : this.controlBtn.classList.remove('pause');
 }
 
 Player.prototype._togglePlayer = function () {
@@ -100,7 +104,7 @@ Player.prototype._addEventInSoundCard = function () {
   var cards = document.querySelectorAll('.fm-sound-card');
 
   cards.forEach(function (item) {
-    item.addEventListener('click', function (e) { this._playSounds(e) }.bind(this));
+    item.addEventListener('click', function (e) { this._addSoundsInPlayer(e) }.bind(this));
   }.bind(this));
 };
 
@@ -109,13 +113,14 @@ Player.prototype._pause = function () {
   this.audioPlayer.pause();
   this._toggleControlBtn(false);
 }
+
 Player.prototype._play = function () {
   this.isPlay = true;
   this.audioPlayer.play();
   this._toggleControlBtn(true);
 }
 
-Player.prototype._playSounds = function (e) {
+Player.prototype._addSoundsInPlayer = function (e) {
   var el = e.target,
     currentAudioData;
 
@@ -124,21 +129,26 @@ Player.prototype._playSounds = function (e) {
     el = el.parentElement;
   }
 
+  if (!el.dataset.id) return;
+
   currentAudioData = helper.getObjectById(soundsData, el.dataset.id);
 
   if (this.audio.current == currentAudioData) {
     this._togglePlayer();
     this.isPlayNew = false;
   } else {
-    this.audio.previous = this.audio.current;
-    this.audio.current = currentAudioData;
-    this.audioPlayer.src = currentAudioData.sound;
-    this.songBand.textContent = currentAudioData.author;
-    this.songName.textContent = currentAudioData.name;
+    this._addDataInPlayer(currentAudioData);
     this._play();
-    
-  }
 
+  }
+}
+
+Player.prototype._addDataInPlayer = function (data) {
+  this.audio.previous = this.audio.current;
+  this.audio.current = data;
+  this.audioPlayer.src = data.sound;
+  this.songBand.textContent = data.author;
+  this.songName.textContent = data.name;
 }
 
 window.onload = function () {
