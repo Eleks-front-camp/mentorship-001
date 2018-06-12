@@ -4,6 +4,7 @@ function SoundsList(_player) {
   this._getSoundsList();
 }
 
+// get souns with soundsAPI
 SoundsList.prototype._getSoundsList = function () {
   soundsAPI.then(
     function (data) {
@@ -14,6 +15,7 @@ SoundsList.prototype._getSoundsList = function () {
   );
 }
 
+// create the sounds list and add in DOM.
 SoundsList.prototype._createList = function (list) {
   if (!list) return;
 
@@ -22,10 +24,13 @@ SoundsList.prototype._createList = function (list) {
       .insertAdjacentHTML('beforeend', this._createTemplate(item));
   }.bind(this));
 
-  this.player._addEventInSoundCard();
-  this.player._isFirstSoundCard(list);
+  if (this.player) {
+    this.player.addEventInSoundCard();
+    this.player.isFirstSoundCard(list);
+  }
 }
 
+// create the sound template
 SoundsList.prototype._createTemplate = function (item) {
   return '<div class="fm-sound-card"' +
     'data-id="' + item.id + '" style="background-image: url(' + item.img + ')">' +
@@ -52,20 +57,7 @@ function Player() {
   this._audioPlayerEvents();
 }
 
-Player.prototype._isFirstSoundCard = function (data) {
-  this._addDataInPlayer(data[0]);
-}
-
-Player.prototype._toggleControlBtn = function (state) {
-  (state)
-    ? this.controlBtn.classList.add('pause')
-    : this.controlBtn.classList.remove('pause');
-}
-
-Player.prototype._togglePlayer = function () {
-  (this.isPlay) ? this._pause() : this._play();
-}
-
+// add events for player elements
 Player.prototype._audioPlayerEvents = function () {
   this.audioPlayer.addEventListener('ended', function () {
     this.pause();
@@ -90,6 +82,7 @@ Player.prototype._audioPlayerEvents = function () {
   }.bind(this));
 }
 
+// update player progres bar
 Player.prototype._updateProgressBar = function () {
   var percentage = 0;
 
@@ -100,7 +93,8 @@ Player.prototype._updateProgressBar = function () {
   this.progressBar.value = percentage;
 };
 
-Player.prototype._addEventInSoundCard = function () {
+// add events for sounds cards
+Player.prototype.addEventInSoundCard = function () {
   var cards = document.querySelectorAll('.fm-sound-card');
 
   cards.forEach(function (item) {
@@ -108,18 +102,7 @@ Player.prototype._addEventInSoundCard = function () {
   }.bind(this));
 };
 
-Player.prototype._pause = function () {
-  this.isPlay = false;
-  this.audioPlayer.pause();
-  this._toggleControlBtn(false);
-}
-
-Player.prototype._play = function () {
-  this.isPlay = true;
-  this.audioPlayer.play();
-  this._toggleControlBtn(true);
-}
-
+// add sounds in player
 Player.prototype._addSoundsInPlayer = function (e) {
   var el = e.target,
     currentAudioData;
@@ -139,10 +122,41 @@ Player.prototype._addSoundsInPlayer = function (e) {
   } else {
     this._addDataInPlayer(currentAudioData);
     this._play();
-
   }
 }
 
+// toggle player, play/pause sounds 
+Player.prototype._togglePlayer = function () {
+  (this.isPlay) ? this._pause() : this._play();
+}
+
+// pause sounds
+Player.prototype._pause = function () {
+  this.isPlay = false;
+  this.audioPlayer.pause();
+  this._toggleControlBtn(false);
+}
+
+// play sounds
+Player.prototype._play = function () {
+  this.isPlay = true;
+  this.audioPlayer.play();
+  this._toggleControlBtn(true);
+}
+
+// toggle control button when play/pause sounds 
+Player.prototype._toggleControlBtn = function (state) {
+  (state)
+    ? this.controlBtn.classList.add('pause')
+    : this.controlBtn.classList.remove('pause');
+}
+
+// add first sounds in player
+Player.prototype.isFirstSoundCard = function (data) {
+  this._addDataInPlayer(data[0]);
+}
+
+// change data fir sounds in player
 Player.prototype._addDataInPlayer = function (data) {
   this.audio.previous = this.audio.current;
   this.audio.current = data;
