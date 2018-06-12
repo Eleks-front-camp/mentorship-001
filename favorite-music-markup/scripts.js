@@ -60,21 +60,15 @@ function Player() {
 // add events for player elements
 Player.prototype._audioPlayerEvents = function () {
   this.audioPlayer.addEventListener('ended', function () {
-    this.pause();
-  });
+    this._pause();
+  }.bind(this));
 
   this.audioPlayer.addEventListener('timeupdate', function () {
     this._updateProgressBar();
   }.bind(this));
 
   this.progressBar.addEventListener('click', function (e) {
-    if (this.audioPlayer.src) {
-      var percent = e.offsetX / this.progressBar.offsetWidth;
-
-      this.audioPlayer.currentTime = percent * this.audioPlayer.duration;
-      e.target.value = Math.floor(percent / 100);
-      e.target.innerHTML = this.progressBar.value + '% played';
-    }
+    this._moveProgresBar(e);
   }.bind(this));
 
   this.controlBtn.addEventListener('click', function () {
@@ -92,6 +86,17 @@ Player.prototype._updateProgressBar = function () {
 
   this.progressBar.value = percentage;
 };
+
+// move progres bar and souds play time
+Player.prototype._moveProgresBar = function (e) {
+  if (this.audioPlayer.src) {
+    var percent = e.offsetX / this.progressBar.offsetWidth;
+
+    this.audioPlayer.currentTime = percent * this.audioPlayer.duration;
+    e.target.value = Math.floor(percent / 100);
+    e.target.innerHTML = this.progressBar.value;
+  }
+}
 
 // add events for sounds cards
 Player.prototype.addEventInSoundCard = function () {
