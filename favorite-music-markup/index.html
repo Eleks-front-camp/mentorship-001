@@ -4,28 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible"
-    content="ie=edge">
+        content="ie=edge">
   <title>Favorite Music</title>
 
   <!-- google font Open Sans -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
-    rel="stylesheet">
+        rel="stylesheet">
 
   <!-- Font Awesome icons -->
   <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Font Family "Open Sans" -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i"
-
-    rel="stylesheet">
+        rel="stylesheet">
   <!-- custom styles -->
   <link rel="stylesheet"
-    href="styles.css">
+        href="styles.css">
 </head>
 
 <body>
+  <div class="fm-bg-img"></div>
   <!-- header -->
   <header>
     <div class="fm-container af-header-content">
@@ -36,7 +36,7 @@
 
         <nav class="fm-user-manu">
           <i class="fa fa-caret-down fa-2x fm-user-manu-btn"
-            aria-hidden="true"></i>
+             aria-hidden="true"></i>
           <ul class="fm-user-sub-manu">
             <li>firs</li>
             <li>second</li>
@@ -53,19 +53,16 @@
     <div class="fm-container">
       <h3>Music list</h3>
 
+      <!-- .fm-sounds-list -->
       <div class="fm-sounds-list">
-        <!-- <div class="fm-sound-card"
-          style="
-            background-image: url('musics/img/greenday_l.jpg');
-          ">
-          <div class="fm-sound-card-content">
-            <h4 class="fm-sound-card-title">Favorite Music</h4>
-            <p class="fm-sound-card-description"> This is my Favorite Music.</p>
-          </div>
-        </div> -->
       </div>
 
-      <audio src="" controls id="audioPlayer"></audio>
+      <div class="clear-both"></div>
+      <!-- /.fm-sounds-list -->
+
+      <audio src=""
+             controls
+             id="audioPlayer"></audio>
     </div>
   </section>
   <!-- /.main-content -->
