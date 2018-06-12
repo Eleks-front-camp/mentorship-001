@@ -273,6 +273,12 @@ header {
   min-height: 110px;
   background: rgba(129, 162, 182, .2) no-repeat center/cover;
   cursor: pointer;
+  box-shadow: 0 0 15px -4px #777;
+  transition: .2s;
+}
+
+.fm-sound-card:hover {
+  box-shadow: 0 0 19px -3px #777;
 }
 
 @media (max-width: 992px) {
