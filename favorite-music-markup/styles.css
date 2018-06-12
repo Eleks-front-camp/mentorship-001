@@ -13,6 +13,10 @@ ul {
   margin: 0;
 }
 
+button {
+  outline: none;
+}
+
 /* VARIABLES
   css variables
 */
@@ -23,6 +27,7 @@ ul {
   /* fm-footer */
   --fm-footer-height: 75px;
   --fm-control-btn-size: 150px;
+  --fm-control-btn-height: var(--fm-control-btn-size);
 }
 
 @media (max-width: 992px) {
@@ -37,6 +42,7 @@ ul {
     /* fm-footer */
     --fm-footer-height: 100px;
     --fm-control-btn-size: 100px;
+    --fm-control-btn-height: 80px;
   }
 }
 
@@ -245,6 +251,7 @@ header {
   text-transform: uppercase;
   font-weight: 400;
 }
+
 /* sounds-list */
 
 .fm-sounds-list {
@@ -320,15 +327,19 @@ footer {
 }
 
 /* .control-btn */
+.fm-control-btn-container {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+}
 
 .fm-control-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0px;
   width: var(--fm-control-btn-size);
-  height: var(--fm-control-btn-size);
+  height: var(--fm-control-btn-height);
   border: 2px solid #fff;
   background: url('img/play-bg.png') no-repeat center/cover;
   cursor: pointer;
@@ -336,21 +347,78 @@ footer {
 
 .fm-control-btn::before {
   content: '';
-  width: 0px;
-  height: 0px;
-  border-top: calc(var(--fm-control-btn-size) / 3) solid transparent;
-  border-left: calc(var(--fm-control-btn-size) / 2) solid #fff;
-  border-bottom: calc(var(--fm-control-btn-size) / 3) solid transparent;
+  border-top: calc(var(--fm-control-btn-height) / 3) solid transparent;
+  border-left: calc(var(--fm-control-btn-height) / 2) solid #fff;
+  border-bottom: calc(var(--fm-control-btn-height) / 3) solid transparent;
 }
 
 .fm-control-btn.pause::before {
   content: '';
-  width: calc(var(--fm-control-btn-size) / 6);
-  height: calc((var(--fm-control-btn-size) / 3) * 2);
-  border-left: calc(var(--fm-control-btn-size) / 6) solid #fff;
-  border-right: calc(var(--fm-control-btn-size) / 6) solid #fff;
+  width: calc(var(--fm-control-btn-height) / 6);
+  height: calc((var(--fm-control-btn-height) / 3) * 2);
+  border-left: calc(var(--fm-control-btn-height) / 6) solid #fff;
+  border-right: calc(var(--fm-control-btn-height) / 6) solid #fff;
   border-bottom: none;
   border-top: none;
+}
+
+.fm-change-sounds-btns {
+  display: flex;
+}
+
+.fm-change-sounds-btns button {
+  --width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--width);
+  height: 40px;
+  margin-left: 10px;
+  border: 1px solid #fff;
+  background: #000 url('img/play-bg.png') no-repeat center;
+  cursor: pointer;
+}
+
+#fm-previous-sound::before,
+#fm-next-sound::after {
+  content: '';
+  width: 3px;
+  height: 20px;
+  background-color: #fff;
+}
+
+#fm-previous-sound::after,
+#fm-next-sound::before {
+  content: '';
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+#fm-previous-sound::after {
+    border-right: 15px solid #fff;
+}
+
+#fm-next-sound::before {
+  border-left: 15px solid #fff;
+}
+
+@media (max-width: 576px) {
+  .fm-control-btn-container {
+    flex-direction: column;
+    align-items: normal;
+  }
+
+  .fm-change-sounds-btns {
+    justify-content: space-between;
+    padding-top: 5px;
+  }
+
+  .fm-change-sounds-btns button {
+    --width: 50px;
+
+    margin: 0;
+  }
 }
 
 /* /.control-btn */
@@ -392,7 +460,7 @@ footer {
 .fm-footer-content {
   display: flex;
   align-items: center;
-  padding-left: 190px;
+  padding-left: 275px;
   height: 100%;
 }
 
@@ -412,7 +480,7 @@ footer {
     font-size: 2.6rem;
   }
   .fm-footer-content {
-    padding-left: 140px;
+    padding-left: 235px;
   }
 }
 

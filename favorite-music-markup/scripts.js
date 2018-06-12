@@ -2,7 +2,7 @@ function SoundsList(_player) {
   this.player = _player;
 
   this._getSoundsList();
-}
+};
 
 // get souns with soundsAPI
 SoundsList.prototype._getSoundsList = function () {
@@ -13,7 +13,7 @@ SoundsList.prototype._getSoundsList = function () {
     }.bind(this),
     function (err) { err.message; }
   );
-}
+};
 
 // create the sounds list and add in DOM.
 SoundsList.prototype._createList = function (list) {
@@ -28,7 +28,7 @@ SoundsList.prototype._createList = function (list) {
     this.player.addEventInSoundCard();
     this.player.isFirstSoundCard(list);
   }
-}
+};
 
 // create the sound template
 SoundsList.prototype._createTemplate = function (item) {
@@ -39,23 +39,24 @@ SoundsList.prototype._createTemplate = function (item) {
     '<p class="fm-sound-card-description">' + item.name + '</p>' +
     '</div>' +
     '</div>';
-}
+};
 
 function Player() {
   this.audioPlayer = document.querySelector('#audioPlayer');
+
   this.controlBtn = document.querySelector('.fm-control-btn');
+  this.previousSoundBtn = document.querySelector('#fm-previous-sound');
+  this.nextSoundBtn = document.querySelector('#fm-next-sound');
+
   this.songBand = document.querySelector('.fm-song-band');
   this.songName = document.querySelector('.fm-song-name');
   this.progressBar = document.querySelector('#fm-progress-bar');
-  this.audio = {
-    previous: null,
-    current: null,
-    next: null
-  };
+
+  this.audioCurrent = null;
   this.isPlay = false;
 
   this._audioPlayerEvents();
-}
+};
 
 // add events for player elements
 Player.prototype._audioPlayerEvents = function () {
@@ -74,7 +75,15 @@ Player.prototype._audioPlayerEvents = function () {
   this.controlBtn.addEventListener('click', function () {
     this._togglePlayer();
   }.bind(this));
-}
+
+  this.previousSoundBtn.addEventListener('click', function () {
+    this._previousSound();
+  }.bind(this));
+
+  this.nextSoundBtn.addEventListener('click', function () {
+    this._nextSound();
+  }.bind(this));
+};
 
 // update player progres bar
 Player.prototype._updateProgressBar = function () {
@@ -96,7 +105,7 @@ Player.prototype._moveProgresBar = function (e) {
     e.target.value = Math.floor(percent / 100);
     e.target.innerHTML = this.progressBar.value;
   }
-}
+};
 
 // add events for sounds cards
 Player.prototype.addEventInSoundCard = function () {
@@ -121,54 +130,73 @@ Player.prototype._addSoundsInPlayer = function (e) {
 
   currentAudioData = helper.getObjectById(soundsData, el.dataset.id);
 
-  if (this.audio.current == currentAudioData) {
+  if (this.audioCurrent == currentAudioData) {
     this._togglePlayer();
     this.isPlayNew = false;
   } else {
     this._addDataInPlayer(currentAudioData);
     this._play();
   }
-}
+};
 
 // toggle player, play/pause sounds 
 Player.prototype._togglePlayer = function () {
   (this.isPlay) ? this._pause() : this._play();
-}
+};
+
+// play previous sound
+Player.prototype._previousSound = function () {
+  var previousAudioIndex = soundsData.indexOf(this.audioCurrent) - 1;
+
+  (previousAudioIndex >= 0)
+    ? this._addDataInPlayer(soundsData[previousAudioIndex])
+    : this._addDataInPlayer(soundsData[soundsData.length - 1]);
+  this._play();
+};
+
+// play nex sound
+Player.prototype._nextSound = function () {
+  var nexAudioIndex =  soundsData.indexOf(this.audioCurrent) + 1;
+
+  (soundsData.length != nexAudioIndex)
+    ? this._addDataInPlayer(soundsData[nexAudioIndex])
+    : this._addDataInPlayer(soundsData[0]);
+  this._play();
+};
 
 // pause sounds
 Player.prototype._pause = function () {
   this.isPlay = false;
   this.audioPlayer.pause();
   this._toggleControlBtn(false);
-}
+};
 
 // play sounds
 Player.prototype._play = function () {
   this.isPlay = true;
   this.audioPlayer.play();
   this._toggleControlBtn(true);
-}
+};
 
 // toggle control button when play/pause sounds 
 Player.prototype._toggleControlBtn = function (state) {
   (state)
     ? this.controlBtn.classList.add('pause')
     : this.controlBtn.classList.remove('pause');
-}
+};
 
 // add first sounds in player
 Player.prototype.isFirstSoundCard = function (data) {
   this._addDataInPlayer(data[0]);
-}
+};
 
 // change data fir sounds in player
 Player.prototype._addDataInPlayer = function (data) {
-  this.audio.previous = this.audio.current;
-  this.audio.current = data;
+  this.audioCurrent = data;
   this.audioPlayer.src = data.sound;
   this.songBand.textContent = data.author;
   this.songName.textContent = data.name;
-}
+};
 
 window.onload = function () {
   var soundsData = [];
