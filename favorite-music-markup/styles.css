@@ -152,18 +152,34 @@ header {
   display: flex;
   align-items: center;
 }
-
-#fm-sound-equalizer.hide {
-  display: none;
+#fm-sound-equalizer .bar,
+#fm-sound-equalizer .bar::before,
+#fm-sound-equalizer .bar::after {
+  width: 3px;
+  height: 10px;
+  background-color: #01abaa;
+  animation: jump 0ms -800ms linear infinite alternate;
 }
 
 #fm-sound-equalizer .bar {
+  display: flex;
+  align-items: center;
   position: relative;
-  background-color: #01abaa;
-  height: 10px;
-  margin-left: 1px;
-  width: 3px;
-  animation: jump 0ms -800ms linear infinite alternate;
+  margin: 0px 5px 0px 4px;
+}
+
+#fm-sound-equalizer .bar::before,
+#fm-sound-equalizer .bar::after {
+  content: '';
+  position: absolute;
+}
+
+#fm-sound-equalizer .bar::before {
+  left: -4px;
+}
+
+#fm-sound-equalizer .bar::after {
+  right: -4px;
 }
 
 @keyframes jump {
@@ -174,28 +190,34 @@ header {
 #fm-sound-equalizer .bar:nth-child(1) {
   animation-duration: 431ms;
 }
-#fm-sound-equalizer .bar:nth-child(2) {
+#fm-sound-equalizer .bar:nth-child(1)::before {
   animation-duration: 496ms;
 }
-#fm-sound-equalizer .bar:nth-child(3) {
+#fm-sound-equalizer .bar:nth-child(1)::after {
   animation-duration: 411ms;
 }
-#fm-sound-equalizer .bar:nth-child(4) {
+#fm-sound-equalizer .bar:nth-child(2) {
   animation-duration: 471ms;
 }
-#fm-sound-equalizer .bar:nth-child(5) {
+#fm-sound-equalizer .bar:nth-child(2)::before {
   animation-duration: 446ms;
 }
-#fm-sound-equalizer .bar:nth-child(6) {
+#fm-sound-equalizer .bar:nth-child(2)::after {
   animation-duration: 421ms;
 }
-#fm-sound-equalizer .bar:nth-child(7) {
+#fm-sound-equalizer .bar:nth-child(3) {
   animation-duration: 490ms;
 }
-#fm-sound-equalizer .bar:nth-child(8) {
+#fm-sound-equalizer .bar:nth-child(3)::before {
   animation-duration: 415ms;
 }
-#fm-sound-equalizer.paused .bar {
+#fm-sound-equalizer .bar:nth-child(3)::after {
+  animation-duration: 421ms;
+}
+
+#fm-sound-equalizer.paused .bar,
+#fm-sound-equalizer.paused .bar::before,
+#fm-sound-equalizer.paused .bar::after {
   animation-play-state: paused;
 }
 /* /#fm-sound-equalizer */
