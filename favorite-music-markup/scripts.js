@@ -171,7 +171,6 @@ Player.prototype._pause = function () {
   this.isPlay = false;
   this.audioPlayer.pause();
   this._toggleControlBtn(false);
-  this._toggleSoundEqualizer(false);
 };
 
 // play sounds
@@ -179,21 +178,17 @@ Player.prototype._play = function () {
   this.isPlay = true;
   this.audioPlayer.play();
   this._toggleControlBtn(true);
-  this._toggleSoundEqualizer(true);
 };
 
-// toggle control button when play/pause sounds 
+// toggle control button and sound squalizer when play/pause sounds
 Player.prototype._toggleControlBtn = function (state) {
-  (state)
-    ? this.controlBtn.classList.add('pause')
-    : this.controlBtn.classList.remove('pause');
-};
-
-// toggle sound squalizer when play/pause sounds
-Player.prototype._toggleSoundEqualizer = function (state) {
-  (state)
-    ? this.soundEqualizer.classList.remove('paused')
-    : this.soundEqualizer.classList.add('paused');
+  if (state) {
+    this.controlBtn.classList.add('pause');
+    this.soundEqualizer.classList.remove('paused');
+  } else {
+    this.controlBtn.classList.remove('pause');
+    this.soundEqualizer.classList.add('paused');
+  }
 };
 
 // add first sounds in player
