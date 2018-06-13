@@ -196,7 +196,7 @@ Player.prototype.isFirstSoundCard = function (data) {
   this._addDataInPlayer(data[0]);
 };
 
-// change data fir sounds in player
+// change data for sounds in player
 Player.prototype._addDataInPlayer = function (data) {
   this.audioCurrent = data;
   this.audioPlayer.src = data.sound;
