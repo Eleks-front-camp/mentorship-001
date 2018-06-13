@@ -152,6 +152,7 @@ header {
   display: flex;
   align-items: center;
 }
+
 #fm-sound-equalizer .bar,
 #fm-sound-equalizer .bar::before,
 #fm-sound-equalizer .bar::after {
@@ -159,6 +160,11 @@ header {
   height: 10px;
   background-color: #01abaa;
   animation: jump 0ms -800ms linear infinite alternate;
+}
+
+@keyframes jump {
+  0% { height: 10px }
+  100% { height: 30px }
 }
 
 #fm-sound-equalizer .bar {
@@ -180,11 +186,6 @@ header {
 
 #fm-sound-equalizer .bar::after {
   right: -4px;
-}
-
-@keyframes jump {
-  0% { height: 10px }
-  100% { height: 30px }
 }
 
 #fm-sound-equalizer .bar:nth-child(1) {
