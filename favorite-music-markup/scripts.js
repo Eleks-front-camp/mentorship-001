@@ -1,5 +1,5 @@
-function SoundsList(_player) {
-  this.player = _player;
+function SoundsList(player) {
+  this.player = player;
 
   this._getSoundsList();
 };
