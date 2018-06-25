@@ -63,7 +63,9 @@ function Player() {
 // add events for player elements
 Player.prototype._audioPlayerEvents = function () {
   this.audioPlayer.addEventListener('ended', function () {
-    this._pause();
+    var nexAudioIndex = soundsData.indexOf(this.audioCurrent) + 1;
+
+    (soundsData.length != nexAudioIndex) ? this._nextSound() : this._pause();
   }.bind(this));
 
   this.audioPlayer.addEventListener('timeupdate', function () {
