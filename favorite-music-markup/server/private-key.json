@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ardent-bridge-214816",
+  "private_key_id": "f51d5d0f3a4e48b771837e0279eccc081c9a1773",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCsxGYcNQdbz7je\nYr6FlLlPRUMBZqIDwposwtA1b+b3P6XSUcZQ8MgOdZNnRV/rVaFKUwLlULfpgO4e\n0v6cqcShyI0FfJ0232E+UfSGG8+38/Ct/ndhn4uIpuOKfH2nPLPL55KFD5m5oRqS\ngp/+7pq0VkFgYRGgMx6ZmpWTXk7YgomtU5IJZGc1PVxeCKxO+hhOJgS63lgDaOdl\nSTnnPXP6RpsoOO2CoZnPixda0iRpCQt+b9C/gXv9We1xIM+Ozc8oBpq6gNbnSs72\nR9Lry//dSxfWQBOklPz3K16cT8gFIWknB9ZvApaDgbBFGz72EepEWvXxJd8ekFCg\nJqaYdR3vAgMBAAECgf9QpV0Ezbwhn1Useet1b3cRCcO9Y6s9Fhnhyw5l41ZtE8jT\n5FgucDbyiO/FxRyBPfeMOjOf144B8a01tkgj2Rtwaa1qYkEA3EUIUjlSYKkVtUkj\n7yTK7S61GzIb8wC0kCFdjTtX4XBgtlMxEMiet8J/a8QYuTcBENu31/D6WYt0hLZD\nTTYb5xOEe3IBMY9vQu/FmxgAa8cyEjDsTSMirXptQrB3SkNjgUGAOw9IIb9QEvBa\nN3Nc57KeHBfSyv1J4R/ZN8wsIDr01PKSs14PemvxullLzGT03nkV4I+hPR3tDWBE\nATQFBktcz7AlWgY9Mr8Ee70GoF3UV7WPyWODeGkCgYEA2pMPaUmxm3HB/sJxuyk/\n46ua+IU8M8tBpPLP/e0J55Plpwjak4yzFaWXPNzyhloQxlaQyo+XbjcXXNEcDmiG\nCDOteYMXmi9JRsgrYR9b/h2AjlKiTUo5LAkOEFbFS5HIw0+lKpAoT0PYbC77C+Yw\naqgOlJpy1f+SrCCshFQu0skCgYEAyllvDzu0ipiC8XOpAxT4m2RTowIwAJ9OEB3e\n3MhBOsUypXHjwGf32MVLjmou0Zdi2A7m8apVCXD7a0db6r+7pULg2a+KppWYxF3+\nlJYj/rOwM8W2ALgNxlD6tzov+4/niD1l85WHIO4Har0jDE6Zw7NfHMQ+g1MHMynL\npV9azvcCgYBRpbePDAE1YMQnxzi2wkzkXfkQtqxraJTH6g/5+a7Ge7/AqpUDov5O\nqsGY8awCtegoPrPthr/5YsjuWgqR80eGDs/RYT/Sz7EeqK1TpWQ2w4x/Ha0VFBHR\nOjyvq8odVYLaOoknIhx8p4pTtyT+J+mUHdz8c8lL2SFP/RCUieHHyQKBgBwdhRLm\nxtUjD76gxXEKLujYbc6OdUEA4YXXwKmIoZea4sieJHkNeSCDeVYWZt70W+WNXIVj\nl2Eyc5yaU6kwbtAtlLRqcadnzcwrCz52BhZTvT3UUM+Uw0U050EiMpyPiCoj7dCE\njDwFFr67/Oyu1yqb97E1i0IP/UYcnpEhyKpNAoGASRiufxSRLthOTvniuQfAotu4\nQlFHxvRFkXmwBCVmj6EPFZ0SfZCIKr4D2T/MJ4rRE177UBoJF1+c6Qe83fc2IQ+I\ndo5a5NRHJcb9zWpNEpVPJYWudUe9BXpabd4awrjrEe6nsU21EHP2u51Cn76kyPHm\nCT5kk3X8xyjMENQUKfw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "googledriveapi@ardent-bridge-214816.iam.gserviceaccount.com",
+  "client_id": "113970783248021665419",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googledriveapi%40ardent-bridge-214816.iam.gserviceaccount.com"
+}
